@@ -25,7 +25,7 @@ $routes->set404Override();
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
 // Set `$autoRoutesImproved` to true in `app/Config/Feature.php` and set the following to true.
-//$routes->setAutoRoute(false);
+//$routes->setAutoRoute(true);
 
 /*
  * --------------------------------------------------------------------
@@ -35,9 +35,10 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+// Default Route
 $routes->get('/login', 'LoginController::index');
 $routes->get('/', 'LoginController::index');
-$routes->get('/dashboard', 'Dashboard::index');
+// Dashboard Route
 $routes->POST('/', 'LoginController::index');
 $routes->POST('/login', 'LoginController::index');
 $routes->get('/login/register', 'LoginController::register');
@@ -45,6 +46,8 @@ $routes->POST('/logincontroller/inputRegister', 'LoginController::inputRegister'
 $routes->get('/logout', 'LoginController::logout');
 $routes->get('/register', 'LoginController::register');
 
+// Validate isLogin
+$routes->get('/dashboard', 'Dashboard::index', ['filter' => 'userfilter']);
 
 
 /*
