@@ -23,7 +23,7 @@ class LoginController extends BaseController
             if (empty($err)) {
                 $cek = $loginuser->where('username', $username)->first();
                 if ($cek) {
-                    if ($cek['password'] === md5($password)) {
+                    if ($cek['password'] === md5($password) && $cek['username'] === $username) {
                         $session = session();
                         $session->set('username', $cek['username']);
                         $session->set('id', $cek['id']);
