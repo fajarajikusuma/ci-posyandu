@@ -81,18 +81,11 @@ class LoginController extends BaseController
                 'password' => md5($password)
             ];
             $loginuser->insert($data);
-            session()->setFlashdata('success', 'Register Berhasil');
             return redirect()->to('/login');
         } else {
             session()->setFlashdata('username', $username);
             session()->setFlashdata('error', $err);
             return redirect()->to('/register');
         }
-        // $data = [
-        //     'username' => $username,
-        //     'password' => md5($password)
-        // ];
-        // $loginuser->insert($data);
-        // return redirect()->to('/login');
     }
 }
