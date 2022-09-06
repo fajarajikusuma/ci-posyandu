@@ -16,7 +16,9 @@ class LoginController extends BaseController
         if ($login) {
             $username = $this->request->getVar('username');
             $password = $this->request->getVar('password');
-
+            //remove whitespace
+            $username = preg_replace('/\s+/', '', $username);
+            $password = preg_replace('/\s+/', '', $password);
             if ($username == '' or $password == '') {
                 $err = "Masukan Username dan Password";
             }
