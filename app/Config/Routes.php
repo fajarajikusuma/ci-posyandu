@@ -48,6 +48,7 @@ $routes->get('/register', 'LoginController::register');
 
 // Validate isLogin
 $routes->get('/dashboard', 'Dashboard::index', ['filter' => 'userfilter']);
+$routes->get('/dataanak', 'DataAnak::index', ['filter' => 'userfilter']);
 
 
 /*
