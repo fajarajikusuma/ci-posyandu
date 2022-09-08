@@ -57,16 +57,16 @@
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="/dataanak">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-solid fa-database"></i>
                     <span>Data Anak</span>
                 </a>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
+                <a class="nav-link collapsed" href="/datapenimbangan">
+                    <i class="fas fa-solid fa-database"></i>
+                    <span>Data Penimbangan</span>
                 </a>
             </li>
 

@@ -99,8 +99,9 @@ class DataAnak extends BaseController
     //create function to delete data with alert
     public function delete($id_anak)
     {
-        $db = \Config\Database::connect();
-        $db->table('data_anak')->where('id_anak', $id_anak)->delete();
+        $modelDataAnak = new \App\Models\DataAnakModel();
+        $modelDataAnak->delete($id_anak);
+        session()->setFlashdata('pesan', 'Data $id_anak berhasil dihapus');
         return redirect()->to('/dataanak');
     }
 }

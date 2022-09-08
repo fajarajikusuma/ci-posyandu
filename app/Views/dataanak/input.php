@@ -115,7 +115,7 @@
                                                     <td><?= $value['alamat']; ?></td>
                                                     <td>
                                                         <a href="/dataanak/edit/<?= $value['id_anak']; ?>" class="btn btn-warning">Edit</a>
-                                                        <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</a>
+                                                        <a href="/dataanak/delete/<?= $value['id_anak']; ?>" class="btn btn-danger" onclick="return confirm('Yakin data <?= $value['id_anak']; ?> akan di hapus?')">Delete</a>
                                                     </td>
                                                     <!-- Delete Modal-->
                                                     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -127,7 +127,7 @@
                                                                         <span aria-hidden="true">×</span>
                                                                     </button>
                                                                 </div>
-                                                                <div class="modal-body">Select "Delete" to delete selected data</div>
+                                                                <div class="modal-body">Yakin Data <?= $value['id_anak']; ?> akan di Hapus?</div>
                                                                 <div class="modal-footer">
                                                                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                                                                     <a class="btn btn-danger" href="/dataanak/delete/<?= $value['id_anak']; ?>">Delete</a>

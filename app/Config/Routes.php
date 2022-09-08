@@ -35,20 +35,23 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+// $routes->get('/login/register', 'LoginController::register');
+// $routes->POST('/logincontroller/inputRegister', 'LoginController::inputRegister');
 // Default Route
-$routes->get('/login', 'LoginController::index');
-$routes->get('/', 'LoginController::index');
-// Dashboard Route
-$routes->POST('/', 'LoginController::index');
-$routes->POST('/login', 'LoginController::index');
-$routes->get('/login/register', 'LoginController::register');
-$routes->POST('/logincontroller/inputRegister', 'LoginController::inputRegister');
+$routes->group('login', ['filter' => 'redirectIfAuthenticated'], function ($routes) {
+    $routes->get('/login', 'LoginController::index');
+    $routes->get('/', 'LoginController::index');
+    $routes->POST('/', 'LoginController::index');
+    $routes->POST('/login', 'LoginController::index');
+});
+// Register and Log Out
 $routes->get('/logout', 'LoginController::logout');
-$routes->get('/register', 'LoginController::register');
+$routes->get('/register', 'LoginController::register', ['filter' => 'redirectIfAuthenticated']);
 
 // Validate isLogin
 $routes->get('/dashboard', 'Dashboard::index', ['filter' => 'userfilter']);
 $routes->get('/dataanak', 'DataAnak::index', ['filter' => 'userfilter']);
+$routes->get('/datapenimbangan', 'DataPenimbangan::index', ['filter' => 'userfilter']);
 
 
 /*

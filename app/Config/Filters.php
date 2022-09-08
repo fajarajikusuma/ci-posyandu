@@ -25,6 +25,7 @@ class Filters extends BaseConfig
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
         'userfilter' => UserFilter::class,
+        'redirectIfAuthenticated' => \App\Filters\RedirectIfAuthenticated::class,
 
     ];
 
