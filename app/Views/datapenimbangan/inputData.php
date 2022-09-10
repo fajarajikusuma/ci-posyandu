@@ -29,7 +29,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="tanggal_penimbangan" class="form-label">Umur</label>
-                        <input type="number" step="any" class="form-control" id="umur" name="umur">
+                        <input type="number" step="any" class="form-control" id="umur" name="umur" value="<?= $umur ?>">
                     </div>
                     <div class="mb-3">
                         <label for="berat_badan" class="form-label">Berat Badan</label>
@@ -39,14 +39,7 @@
                         <label for="tinggi_badan" class="form-label">Tinggi Badan</label>
                         <input type="number" step="any" class="form-control" id="tinggi_badan" name="tinggi_badan">
                     </div>
-                    <div class="mb-3">
-                        <label for="lingkar_kepala" class="form-label">Berat Badan Lahir</label>
-                        <input type="number" step="any" class="form-control" id="bbl" name="bbl">
-                    </div>
-                    <div class="mb-3">
-                        <label for="lingkar_dada" class="form-label">Panjang Badan Lahir</label>
-                        <input type="number" step="any" class="form-control" id="pbl" name="pbl">
-                    </div>
+
                     <div class="mb-3">
                         <label for="lingkar_dada" class="form-label">Keterangan</label>
                         <input type="text" class="form-control" id="keterangan" name="keterangan">

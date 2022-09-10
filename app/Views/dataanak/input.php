@@ -60,6 +60,14 @@
                                                 <option value="P">Perempuan</option>
                                             </select>
                                         </div>
+                                        <div class="mb-3">
+                                            <label for="lingkar_kepala" class="form-label">Berat Badan Lahir</label>
+                                            <input type="number" step="any" class="form-control" id="bbl" name="bbl">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="lingkar_dada" class="form-label">Panjang Badan Lahir</label>
+                                            <input type="number" step="any" class="form-control" id="pbl" name="pbl">
+                                        </div>
                                         <label for="">Alamat</label>
                                         <div class="form-floating mb-3">
                                             <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="alamat"></textarea>
@@ -86,8 +94,8 @@
                                 <div class="card-header bg-dark text-white">
                                     <h4>Table Data Anak</h4>
                                 </div>
-                                <div class="card-body">
-                                    <table class="table table-striped">
+                                <div class="card-body overflow-auto">
+                                    <table class="table table-bordered">
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
@@ -97,6 +105,8 @@
                                                 <th scope="col">Nama Ayah</th>
                                                 <th scope="col">Tanggal Lahir</th>
                                                 <th scope="col">Jenis Kelamin</th>
+                                                <th scope="col">Berat Badan Lahir</th>
+                                                <th scope="col">Panjang Badan Lahir</th>
                                                 <th scope="col">Alamat</th>
                                                 <th scope="col">Action</th>
                                             </tr>
@@ -112,6 +122,8 @@
                                                     <td><?= $value['nama_ayah']; ?></td>
                                                     <td><?= $value['tanggal_lahir']; ?></td>
                                                     <td><?= $value['jenis_kelamin']; ?></td>
+                                                    <td><?= $value['bbl']; ?></td>
+                                                    <td><?= $value['pbl']; ?></td>
                                                     <td><?= $value['alamat']; ?></td>
                                                     <td>
                                                         <a href="/dataanak/edit/<?= $value['id_anak']; ?>" class="btn btn-warning">Edit</a>

@@ -42,6 +42,14 @@
                                                     } ?>>Perempuan</option>
                             </select>
                         </div>
+                        <div class="mb-3">
+                            <label for="lingkar_kepala" class="form-label">Berat Badan Lahir</label>
+                            <input type="number" step="any" class="form-control" id="bbl" name="bbl" value="<?= $bbl; ?>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="lingkar_dada" class="form-label">Panjang Badan Lahir</label>
+                            <input type="number" step="any" class="form-control" id="pbl" name="pbl" value="<?= $pbl; ?>">
+                        </div>
                         <div class="form-group">
                             <label for="alamat">Alamat</label>
                             <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $alamat; ?>">

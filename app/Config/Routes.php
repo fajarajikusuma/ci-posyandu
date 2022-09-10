@@ -38,12 +38,16 @@ $routes->setAutoRoute(true);
 // $routes->get('/login/register', 'LoginController::register');
 // $routes->POST('/logincontroller/inputRegister', 'LoginController::inputRegister');
 // Default Route
-$routes->group('login', ['filter' => 'redirectIfAuthenticated'], function ($routes) {
-    $routes->get('/login', 'LoginController::index');
-    $routes->get('/', 'LoginController::index');
-    $routes->POST('/', 'LoginController::index');
-    $routes->POST('/login', 'LoginController::index');
-});
+$routes->get('/', 'LoginController::index', ['filter' => 'redirectIfAuthenticated']);
+$routes->POST('/', 'LoginController::index', ['filter' => 'redirectIfAuthenticated']);
+$routes->get('/login', 'LoginController::index', ['filter' => 'redirectIfAuthenticated']);
+$routes->POST('/login', 'LoginController::index', ['filter' => 'redirectIfAuthenticated']);
+
+// $routes->group('login', ['filter' => 'redirectIfAuthenticated'], function ($routes) {
+//     $routes->get('/', 'LoginController::index');
+//     $routes->POST('/', 'LoginController::index');
+
+// });
 // Register and Log Out
 $routes->get('/logout', 'LoginController::logout');
 $routes->get('/register', 'LoginController::register', ['filter' => 'redirectIfAuthenticated']);

@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use DateTime;
+use SebastianBergmann\Diff\Diff;
 
 class DataPenimbangan extends BaseController
 {
@@ -34,10 +36,22 @@ class DataPenimbangan extends BaseController
         $noUrut++;
         $char = "PN";
         $newID = $char . sprintf("%04s", $noUrut);
+        //make umur is automatically input
+        $query = $db->query("SELECT * FROM data_anak WHERE id_anak = '$id_anak'");
+        foreach ($query->getResult() as $row) {
+            $tanggal_lahir = $row->tanggal_lahir;
+        }
+        $tanggal_lahir = new \DateTime($tanggal_lahir);
+        $today = new \DateTime('today');
+        $umurTahun = $today->diff($tanggal_lahir)->y;
+        $umurBulan = $today->diff($tanggal_lahir)->m;
+        $umurAsBulan = $umurTahun * 12;
+        $umur = $umurAsBulan + $umurBulan;
         $data = [
-            'title' => 'Data Penimbangan',
+            'title' => 'Input Data Penimbangan',
             'id_penimbangan' => $newID,
-            'id_anak' => $id_anak
+            'id_anak' => $id_anak,
+            'umur' => $umur
         ];
         return view('datapenimbangan/inputData', $data);
     }
@@ -50,18 +64,14 @@ class DataPenimbangan extends BaseController
         $tanggal_input = $this->request->getPost('tanggal_input');
         $berat_badan = $this->request->getPost('berat_badan');
         $tinggi_badan = $this->request->getPost('tinggi_badan');
-        $bbl = $this->request->getPost('bbl');
         $umur = $this->request->getPost('umur');
         $keterangan = $this->request->getPost('keterangan');
-        $pbl = $this->request->getPost('pbl');
         $petugas = $this->request->getPost('petugas');
         $data = [
             'id_penimbangan' => $id_penimbangan,
             'id_anak' => $id_anak,
             'berat_badan' => $berat_badan,
             'tinggi_badan' => $tinggi_badan,
-            'bbl' => $bbl,
-            'pbl' => $pbl,
             'umur' => $umur,
             'keterangan' => $keterangan,
             'petugas' => $petugas,

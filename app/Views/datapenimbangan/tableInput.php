@@ -27,7 +27,7 @@
                                 <div class="card-header bg-dark text-white">
                                     <h4>Table Data Anak</h4>
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body overflow-auto">
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
@@ -38,6 +38,8 @@
                                                 <th scope="col">Nama Ayah</th>
                                                 <th scope="col">Tanggal Lahir</th>
                                                 <th scope="col">Jenis Kelamin</th>
+                                                <th scope="col">BBL</th>
+                                                <th scope="col">PBL</th>
                                                 <th scope="col">Alamat</th>
                                                 <th scope="col">Action</th>
                                             </tr>
@@ -53,6 +55,8 @@
                                                     <td><?= $value['nama_ayah']; ?></td>
                                                     <td><?= $value['tanggal_lahir']; ?></td>
                                                     <td><?= $value['jenis_kelamin']; ?></td>
+                                                    <td><?= $value['bbl']; ?></td>
+                                                    <td><?= $value['pbl']; ?></td>
                                                     <td><?= $value['alamat']; ?></td>
                                                     <td>
                                                         <a href="/datapenimbangan/inputData/<?= $value['id_anak']; ?>" class="btn btn-success">Input Data Penimbangan</a>
@@ -81,7 +85,7 @@
                                 <div class="card-header bg-dark text-white">
                                     <h4>Table Data Penimbangan</h4>
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body overflow-auto">
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
@@ -95,10 +99,10 @@
                                                 <th scope="col">Jns Kelamin</th>
                                                 <th scope="col">Alamat</th>
                                                 <th scope="col">Umur</th>
-                                                <th scope="col">BB</th>
-                                                <th scope="col">TB</th>
                                                 <th scope="col">BBL</th>
                                                 <th scope="col">PBL</th>
+                                                <th scope="col">BB</th>
+                                                <th scope="col">TB</th>
                                                 <th scope="col">Ket</th>
                                                 <th scope="col">Tanggal Timbang</th>
                                                 <th scope="col">Petugas</th>
@@ -119,10 +123,10 @@
                                                     <td><?= $value->jenis_kelamin; ?></td>
                                                     <td><?= $value->alamat; ?></td>
                                                     <td><?= $value->umur; ?></td>
-                                                    <td><?= $value->berat_badan; ?></td>
-                                                    <td><?= $value->tinggi_badan; ?></td>
                                                     <td><?= $value->bbl; ?></td>
                                                     <td><?= $value->pbl; ?></td>
+                                                    <td><?= $value->berat_badan; ?></td>
+                                                    <td><?= $value->tinggi_badan; ?></td>
                                                     <td><?= $value->keterangan; ?></td>
                                                     <td><?= $value->tanggal_input; ?></td>
                                                     <td><?= $value->petugas; ?></td>

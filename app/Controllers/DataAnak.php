@@ -40,6 +40,8 @@ class DataAnak extends BaseController
         $nama_ayah = $this->request->getPost('nama_ayah');
         $tanggal_lahir = $this->request->getPost('tanggal_lahir');
         $jenis_kelamin = $this->request->getPost('jenis_kelamin');
+        $bbl = $this->request->getPost('bbl');
+        $pbl = $this->request->getPost('pbl');
         $alamat = $this->request->getPost('alamat');
         $data = [
             'id_anak' => $id_anak,
@@ -48,6 +50,8 @@ class DataAnak extends BaseController
             'nama_ayah' => $nama_ayah,
             'tanggal_lahir' => $tanggal_lahir,
             'jenis_kelamin' => $jenis_kelamin,
+            'bbl' => $bbl,
+            'pbl' => $pbl,
             'alamat' => $alamat
         ];
         $db->table('data_anak')->insert($data);
@@ -68,6 +72,8 @@ class DataAnak extends BaseController
             'nama_ayah' => $row->nama_ayah,
             'tanggal_lahir' => $row->tanggal_lahir,
             'jenis_kelamin' => $row->jenis_kelamin,
+            'bbl' => $row->bbl,
+            'pbl' => $row->pbl,
             'alamat' => $row->alamat
         ];
         return view('dataanak/edit', $data);
@@ -83,6 +89,8 @@ class DataAnak extends BaseController
         $nama_ayah = $this->request->getPost('nama_ayah');
         $tanggal_lahir = $this->request->getPost('tanggal_lahir');
         $jenis_kelamin = $this->request->getPost('jenis_kelamin');
+        $bbl = $this->request->getPost('bbl');
+        $pbl = $this->request->getPost('pbl');
         $alamat = $this->request->getPost('alamat');
         $data = [
             'id_anak' => $id_anak,
@@ -91,6 +99,8 @@ class DataAnak extends BaseController
             'nama_ayah' => $nama_ayah,
             'tanggal_lahir' => $tanggal_lahir,
             'jenis_kelamin' => $jenis_kelamin,
+            'bbl' => $bbl,
+            'pbl' => $pbl,
             'alamat' => $alamat
         ];
         $db->table('data_anak')->where('id_anak', $id_anak)->update($data);

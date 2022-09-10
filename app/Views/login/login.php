@@ -54,11 +54,9 @@
                             </div>
 
                             <button type="submit" class="btn btn-primary btn-lg btn-block" name="login" value="LOGIN">Sign in</button>
-                            <a class="btn btn-primary btn-lg btn-block" style="background-color: #3b5998" href="/login/register" role="button">
+                            <a class="btn btn-primary btn-lg btn-block" style="background-color: #3b5998" href="/register" role="button">
                                 <i class="fas fa-user me-2"></i>Register
                             </a>
-
-
                         </form>
                     </div>
                 </div>

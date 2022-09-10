@@ -14,7 +14,7 @@ class DataPenimbanganModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_penimbangan', 'id_anak', 'umur', 'berat_badan', 'tinggi_badan', 'bbl', 'pbl', 'keterangan', 'tanggal_input', 'petugas'];
+    protected $allowedFields    = ['id_penimbangan', 'id_anak', 'umur', 'berat_badan', 'tinggi_badan', 'keterangan', 'tanggal_input', 'petugas'];
 
     // Dates
     protected $useTimestamps = false;
