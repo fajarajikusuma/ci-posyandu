@@ -3,24 +3,32 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use CodeIgniter\Commands\Database\Seed;
 
 class LoginController extends BaseController
 {
     public function index()
     {
+        $data = [
+            'title' => 'Login'
+        ];
+        return view('login/login.php', $data);
+    }
+    public function loginProses()
+    {
         $loginuser = new \App\Models\Login();
         $login = $this->request->getVar('login');
-        $data = [
-            'title' => 'Login Admin'
-        ];
+        //validate login with flashdata
         if ($login) {
             $username = $this->request->getVar('username');
             $password = $this->request->getVar('password');
             //remove whitespace
             $username = preg_replace('/\s+/', '', $username);
             $password = preg_replace('/\s+/', '', $password);
+            //check if username and password is empty
             if ($username == '' or $password == '') {
-                $err = "Masukan Username dan Password";
+                session()->setFlashdata('error', 'Masukan Username dan Password');
+                return redirect()->to('/login');
             }
             if (empty($err)) {
                 $cek = $loginuser->where('username', $username)->first();
@@ -31,19 +39,15 @@ class LoginController extends BaseController
                         $session->set('id', $cek['id']);
                         return redirect()->to('/dashboard');
                     } else {
-                        $err = "Username atau Password Salah";
+                        session()->setFlashdata('error', 'Username atau Password Salah');
+                        return redirect()->to('/login');
                     }
                 } else {
-                    $err = "Username Tidak Terdaftar";
+                    session()->setFlashdata('error', 'Username Tidak Ditemukan');
+                    return redirect()->to('/login');
                 }
             }
-            if ($err) {
-                session()->setFlashdata('username', $username);
-                session()->setFlashdata('error', $err);
-                return redirect()->to('/login');
-            }
         }
-        return view('login/login.php', $data);
     }
     public function logout()
     {
@@ -85,7 +89,6 @@ class LoginController extends BaseController
             $loginuser->insert($data);
             return redirect()->to('/login');
         } else {
-            session()->setFlashdata('username', $username);
             session()->setFlashdata('error', $err);
             return redirect()->to('/register');
         }

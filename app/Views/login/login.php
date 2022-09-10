@@ -40,11 +40,11 @@
                                 <?= session()->getFlashdata('error'); ?>
                             </div>
                         <?php endif; ?>
-                        <form method="POST">
+                        <form method="POST" action="/logincontroller/loginProses">
                             <!-- Email input -->
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="form1Example13">Username</label>
-                                <input type="text" id="form1Example13" class="form-control form-control-lg" name="username" value="<?= session()->getFlashdata('username'); ?>" />
+                                <input type="text" id="form1Example13" class="form-control form-control-lg" name="username" />
                             </div>
 
                             <!-- Password input -->
