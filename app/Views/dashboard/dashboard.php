@@ -70,6 +70,14 @@
                 </a>
             </li>
 
+            <!-- Data Pasca Timbang -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/datapascatimbang">
+                    <i class="fas fa-solid fa-database"></i>
+                    <span>Data Pasca Timbang</span>
+                </a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 

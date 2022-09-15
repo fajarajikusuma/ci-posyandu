@@ -16,6 +16,10 @@
                             <input type="text" class="form-control" id="id_anak" name="id_anak" value="<?= $id_anak; ?>" readonly>
                         </div>
                         <div class="form-group">
+                            <label for="nik">NIK</label>
+                            <input type="text" class="form-control" id="nik" name="nik" value="<?= $nik; ?>">
+                        </div>
+                        <div class="form-group">
                             <label for="nama_anak">Nama Anak</label>
                             <input type="text" class="form-control" id="nama_anak" name="nama_anak" value="<?= $nama_anak; ?>">
                         </div>

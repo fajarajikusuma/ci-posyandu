@@ -15,10 +15,10 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <h4>Input Data Penimbangan</h4>
+                <h4>Edit Data Penimbangan</h4>
             </div>
             <div class="card-body">
-                <form action="/datapenimbangan/save" method="post">
+                <form action="/datapenimbangan/update" method="post">
                     <div class="mb-3">
                         <label for="id_penimbangan" class="form-label">ID Penimbangan</label>
                         <input type="text" class="form-control" id="id_penimbangan" name="id_penimbangan" value="<?= $id_penimbangan ?>" readonly>
@@ -33,11 +33,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="berat_badan" class="form-label">Berat Badan</label>
-                        <input type="number" step="any" class="form-control" id="berat_badan" name="berat_badan" min="0" value="0" required>
+                        <input type="number" step="any" class="form-control" id="berat_badan" name="berat_badan" min="0" value="<?= $berat_badan ?>" required>
                     </div>
                     <div class="mb-3">
                         <label for="tinggi_badan" class="form-label">Tinggi Badan</label>
-                        <input type="number" step="any" class="form-control" id="tinggi_badan" name="tinggi_badan" min="0" value="0" required>
+                        <input type="number" step="any" class="form-control" id="tinggi_badan" name="tinggi_badan" min="0" value="<?= $tinggi_badan ?>" required>
                     </div>
                     <div class="mb-3">
                         <div class="row">
@@ -45,33 +45,46 @@
                                 <label class="form-label" for="keterangan">Keterangan</label>
                                 <select class="form-select" name="keterangan" id="keterangan" required>
                                     <option selected="true" disabled value="">Masukan Keterangan</option>
-                                    <option value="Naik">Naik</option>
-                                    <option value="Turun">Turun</option>
-                                    <option value="">Tetap</option>
-                                    <option value="Tidak Timbang">Tidak Timbang</option>
+                                    <option value="Naik" <?php if ($keterangan == 'Naik') {
+                                                                echo 'selected';
+                                                            } ?>>Naik</option>
+                                    <option value="Turun" <?php if ($keterangan == 'Turun') {
+                                                                echo 'selected';
+                                                            } ?>>Turun</option>
+                                    <option value="" <?php if ($keterangan == '') {
+                                                            echo 'selected';
+                                                        } ?>>Tetap</option>
+                                    <option value="Tidak Timbang" <?php if ($keterangan == 'Tidak Timbang') {
+                                                                        echo 'selected';
+                                                                    } ?>>Tidak Timbang</option>
                                 </select>
                             </div>
                             <div class="col">
                                 <label class="form-label" for="posisi">Posisi</label>
                                 <select class="form-select" name="posisi" id="posisi" required>
                                     <option selected="true" disabled value="">Masukan Posisi</option>
-                                    <option value="">0</option>
-                                    <option value="BGT">BGT</option>
-                                    <option value="BGM">BGM</option>
+                                    <option value="" <?php if ($posisi == '') {
+                                                            echo 'selected';
+                                                        } ?>>0</option>
+                                    <option value="BGT" <?php if ($posisi == 'BGT') {
+                                                            echo 'selected';
+                                                        } ?>>BGT</option>
+                                    <option value="BGM" <?php if ($posisi == 'BGM') {
+                                                            echo 'selected';
+                                                        } ?>>BGM</option>
                                 </select>
                             </div>
                         </div>
-
                     </div>
                     <div class="mb-3">
                         <label for="tanggal_penimbangan" class="form-label">Tanggal Penimbangan</label>
-                        <input type="date" class="form-control" id="tanggal_input" name="tanggal_input" value="<?= date('Y-m-d'); ?>" required>
+                        <input type="date" class="form-control" id="tanggal_input" name="tanggal_input" value="<?= $tanggal_input ?>" required>
                     </div>
                     <div class="mb-3">
                         <label for="lingkar_lengan" class="form-label">Petugas</label>
                         <input type="text" class="form-control" id="petugas" name="petugas" value="<?= session()->get('username'); ?>" readonly>
                     </div>
-                    <button class="btn btn-primary" type="submit">Input</button>
+                    <button class="btn btn-primary" type="submit">Edit</button>
                 </form>
             </div>
         </div>

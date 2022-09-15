@@ -16,6 +16,11 @@
 
 <body>
     <div class="container-fluid mb-5">
+        <?php if (session()->getFlashdata('error')) : ?>
+            <div class="alert alert-danger">
+                <?= session()->getFlashdata('error'); ?>
+            </div>
+        <?php endif; ?>
         <div class="accordion" id="accordionPanelsStayOpenExample">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
@@ -37,40 +42,44 @@
                                             <input type="text" class="form-control" id="exampleInputID" value="<?= $id_anak ?>" id="id_anak" name="id_anak" readonly>
                                         </div>
                                         <div class="mb-3">
+                                            <label for="exampleInputPassword1" class="form-label">NIK</label>
+                                            <input type="text" class="form-control" id="exampleInputNama" placeholder="Input NIK" name="nik" value="0">
+                                        </div>
+                                        <div class="mb-3">
                                             <label for="exampleInputPassword1" class="form-label">Nama Anak</label>
-                                            <input type="text" class="form-control" id="exampleInputNama" placeholder="Input Nama Anak" name="nama_anak">
+                                            <input type="text" class="form-control" id="exampleInputNama" placeholder="Input Nama Anak" name="nama_anak" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="exampleInputPassword1" class="form-label">Nama Ibu</label>
-                                            <input type="text" class="form-control" id="exampleInputNama" placeholder="Input Nama Ibu" name="nama_ibu">
+                                            <input type="text" class="form-control" id="exampleInputNama" placeholder="Input Nama Ibu" name="nama_ibu" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="exampleInputPassword1" class="form-label">Nama Ayah</label>
-                                            <input type="text" class="form-control" id="exampleInputNama" placeholder="Input Nama Ayah" name="nama_ayah">
+                                            <input type="text" class="form-control" id="exampleInputNama" placeholder="Input Nama Ayah" name="nama_ayah" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="exampleInputPassword1" class="form-label">Tanggal Lahir</label>
-                                            <input type="date" class="form-control" id="exampleInputNama" name="tanggal_lahir">
+                                            <input type="date" class="form-control" id="exampleInputNama" name="tanggal_lahir" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="disabledSelect" class="form-label">Jenis Kelamin</label>
-                                            <select id="disabledSelect" class="form-select" name="jenis_kelamin">
-                                                <option selected="true" disabled>Pilih Jenis Kelamin</option>
+                                            <select id="disabledSelect" class="form-select" name="jenis_kelamin" required>
+                                                <option selected="true" disabled value="">Pilih Jenis Kelamin</option>
                                                 <option value="L">Laki-Laki</option>
                                                 <option value="P">Perempuan</option>
                                             </select>
                                         </div>
                                         <div class="mb-3">
                                             <label for="lingkar_kepala" class="form-label">Berat Badan Lahir</label>
-                                            <input type="number" step="any" class="form-control" id="bbl" name="bbl">
+                                            <input type="number" step="any" class="form-control" id="bbl" name="bbl" placeholder="Masukan BBL" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="lingkar_dada" class="form-label">Panjang Badan Lahir</label>
-                                            <input type="number" step="any" class="form-control" id="pbl" name="pbl">
+                                            <input type="number" step="any" class="form-control" id="pbl" name="pbl" placeholder="Masukan PBL" required>
                                         </div>
                                         <label for="">Alamat</label>
                                         <div class="form-floating mb-3">
-                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="alamat"></textarea>
+                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="alamat" required></textarea>
                                             <label for="floatingTextarea">Input Alamat</label>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Input</button>
@@ -100,6 +109,7 @@
                                             <tr>
                                                 <th scope="col">No</th>
                                                 <th scope="col">ID Anak</th>
+                                                <th scope="col">NIK</th>
                                                 <th scope="col">Nama Anak</th>
                                                 <th scope="col">Nama Ibu</th>
                                                 <th scope="col">Nama Ayah</th>
@@ -117,6 +127,7 @@
                                                 <tr>
                                                     <th scope="row"><?= $no++; ?></th>
                                                     <td><?= $value['id_anak']; ?></td>
+                                                    <td><?= $value['nik']; ?></td>
                                                     <td><?= $value['nama_anak']; ?></td>
                                                     <td><?= $value['nama_ibu']; ?></td>
                                                     <td><?= $value['nama_ayah']; ?></td>

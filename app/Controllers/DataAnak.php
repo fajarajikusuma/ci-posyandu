@@ -35,6 +35,7 @@ class DataAnak extends BaseController
     {
         $db = \Config\Database::connect();
         $id_anak = $this->request->getPost('id_anak');
+        $nik = $this->request->getPost('nik');
         $nama_anak = $this->request->getPost('nama_anak');
         $nama_ibu = $this->request->getPost('nama_ibu');
         $nama_ayah = $this->request->getPost('nama_ayah');
@@ -43,19 +44,28 @@ class DataAnak extends BaseController
         $bbl = $this->request->getPost('bbl');
         $pbl = $this->request->getPost('pbl');
         $alamat = $this->request->getPost('alamat');
-        $data = [
-            'id_anak' => $id_anak,
-            'nama_anak' => $nama_anak,
-            'nama_ibu' => $nama_ibu,
-            'nama_ayah' => $nama_ayah,
-            'tanggal_lahir' => $tanggal_lahir,
-            'jenis_kelamin' => $jenis_kelamin,
-            'bbl' => $bbl,
-            'pbl' => $pbl,
-            'alamat' => $alamat
-        ];
-        $db->table('data_anak')->insert($data);
-        return redirect()->to('/dataanak');
+        $anakModel = new \App\Models\DataAnakModel();
+        $cek = $anakModel->where('nik', $nik)->first();
+        if ($nik == "0" && $cek == null) {
+            $data = [
+                'id_anak' => $id_anak,
+                'nik' => $nik,
+                'nama_anak' => $nama_anak,
+                'nama_ibu' => $nama_ibu,
+                'nama_ayah' => $nama_ayah,
+                'tanggal_lahir' => $tanggal_lahir,
+                'jenis_kelamin' => $jenis_kelamin,
+                'bbl' => $bbl,
+                'pbl' => $pbl,
+                'alamat' => $alamat
+            ];
+            $anakModel->insert($data);
+            session()->setFlashdata('success', 'Data Berhasil Ditambahkan');
+            return redirect()->to('/dataanak');
+        } else {
+            session()->setFlashdata('error', 'NIK Sudah Terdaftar');
+            return redirect()->to('/dataanak');
+        }
     }
 
     //create function to edit data
@@ -67,6 +77,7 @@ class DataAnak extends BaseController
         $data = [
             'title' => 'Edit Data Anak',
             'id_anak' => $row->id_anak,
+            'nik' => $row->nik,
             'nama_anak' => $row->nama_anak,
             'nama_ibu' => $row->nama_ibu,
             'nama_ayah' => $row->nama_ayah,
@@ -84,6 +95,7 @@ class DataAnak extends BaseController
     {
         $db = \Config\Database::connect();
         $id_anak = $this->request->getPost('id_anak');
+        $nik = $this->request->getPost('nik');
         $nama_anak = $this->request->getPost('nama_anak');
         $nama_ibu = $this->request->getPost('nama_ibu');
         $nama_ayah = $this->request->getPost('nama_ayah');
@@ -94,6 +106,7 @@ class DataAnak extends BaseController
         $alamat = $this->request->getPost('alamat');
         $data = [
             'id_anak' => $id_anak,
+            'nik' => $nik,
             'nama_anak' => $nama_anak,
             'nama_ibu' => $nama_ibu,
             'nama_ayah' => $nama_ayah,

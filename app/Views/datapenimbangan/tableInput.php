@@ -33,6 +33,7 @@
                                             <tr>
                                                 <th scope="col">No</th>
                                                 <th scope="col">ID Anak</th>
+                                                <th scope="col">NIK</th>
                                                 <th scope="col">Nama Anak</th>
                                                 <th scope="col">Nama Ibu</th>
                                                 <th scope="col">Nama Ayah</th>
@@ -50,6 +51,7 @@
                                                 <tr>
                                                     <th scope="row"><?= $no++; ?></th>
                                                     <td><?= $value['id_anak']; ?></td>
+                                                    <td><?= $value['nik']; ?></td>
                                                     <td><?= $value['nama_anak']; ?></td>
                                                     <td><?= $value['nama_ibu']; ?></td>
                                                     <td><?= $value['nama_ayah']; ?></td>
@@ -91,7 +93,7 @@
                                             <tr>
                                                 <th scope="col">No</th>
                                                 <th scope="col">Id Timbang</th>
-                                                <th scope="col">Id Anak</th>
+                                                <th scope="col">NIK</th>
                                                 <th scope="col">Nama Anak</th>
                                                 <th scope="col">Nama Ibu</th>
                                                 <th scope="col">Nama Ayah</th>
@@ -115,7 +117,7 @@
                                                 <tr>
                                                     <th scope="row"><?= $no++; ?></th>
                                                     <td><?= $value->id_penimbangan; ?></td>
-                                                    <td><?= $value->id_anak; ?></td>
+                                                    <td><?= $value->nik; ?></td>
                                                     <td><?= $value->nama_anak; ?></td>
                                                     <td><?= $value->nama_ibu; ?></td>
                                                     <td><?= $value->nama_ayah; ?></td>
@@ -127,7 +129,13 @@
                                                     <td><?= $value->pbl; ?></td>
                                                     <td><?= $value->berat_badan; ?></td>
                                                     <td><?= $value->tinggi_badan; ?></td>
-                                                    <td><?= $value->keterangan; ?></td>
+                                                    <?php if ($value->posisi === "") {
+                                                        echo '<td>' . $value->keterangan . '</td>';
+                                                    } else if ($value->keterangan == "") {
+                                                        echo '<td>' . $value->posisi . '</td>';
+                                                    } else {
+                                                        echo '<td>' . $value->keterangan . ", " . $value->posisi . '</td>';
+                                                    } ?>
                                                     <td><?= $value->tanggal_input; ?></td>
                                                     <td><?= $value->petugas; ?></td>
                                                     <td>

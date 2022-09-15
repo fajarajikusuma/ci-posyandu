@@ -66,6 +66,7 @@ class DataPenimbangan extends BaseController
         $tinggi_badan = $this->request->getPost('tinggi_badan');
         $umur = $this->request->getPost('umur');
         $keterangan = $this->request->getPost('keterangan');
+        $posisi = $this->request->getPost('posisi');
         $petugas = $this->request->getPost('petugas');
         $data = [
             'id_penimbangan' => $id_penimbangan,
@@ -74,6 +75,7 @@ class DataPenimbangan extends BaseController
             'tinggi_badan' => $tinggi_badan,
             'umur' => $umur,
             'keterangan' => $keterangan,
+            'posisi' => $posisi,
             'petugas' => $petugas,
             'tanggal_input' => $tanggal_input
         ];
@@ -86,6 +88,49 @@ class DataPenimbangan extends BaseController
     {
         $db = \Config\Database::connect();
         $db->table('data_penimbangan')->delete(['id_penimbangan' => $id_penimbangan]);
+        return redirect()->to('/datapenimbangan');
+    }
+
+    public function edit($id_penimbangan)
+    {
+        $db = \Config\Database::connect();
+        $query = $db->query("SELECT * FROM data_penimbangan WHERE id_penimbangan = '$id_penimbangan'");
+        $row = $query->getRow();
+        $data = [
+            'title' => 'Edit Data Penimbangan',
+            'id_penimbangan' => $id_penimbangan,
+            'id_anak' => $row->id_anak,
+            'umur' => $row->umur,
+            'berat_badan' => $row->berat_badan,
+            'tinggi_badan' => $row->tinggi_badan,
+            'keterangan' => $row->keterangan,
+            'posisi' => $row->posisi,
+            'tanggal_input' => $row->tanggal_input
+        ];
+        return view('datapenimbangan/editData', $data);
+    }
+    public function update()
+    {
+        $db = \Config\Database::connect();
+        $id_penimbangan = $this->request->getPost('id_penimbangan');
+        $id_anak = $this->request->getPost('id_anak');
+        $tanggal_input = $this->request->getPost('tanggal_input');
+        $berat_badan = $this->request->getPost('berat_badan');
+        $tinggi_badan = $this->request->getPost('tinggi_badan');
+        $umur = $this->request->getPost('umur');
+        $keterangan = $this->request->getPost('keterangan');
+        $posisi = $this->request->getPost('posisi');
+        $data = [
+            'id_penimbangan' => $id_penimbangan,
+            'id_anak' => $id_anak,
+            'berat_badan' => $berat_badan,
+            'tinggi_badan' => $tinggi_badan,
+            'umur' => $umur,
+            'keterangan' => $keterangan,
+            'posisi' => $posisi,
+            'tanggal_input' => $tanggal_input
+        ];
+        $db->table('data_penimbangan')->update($data, ['id_penimbangan' => $id_penimbangan]);
         return redirect()->to('/datapenimbangan');
     }
 }
