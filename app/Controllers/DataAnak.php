@@ -33,7 +33,7 @@ class DataAnak extends BaseController
     //create function to save data
     public function save()
     {
-        $db = \Config\Database::connect();
+        $anakModel = new \App\Models\DataAnakModel();
         $id_anak = $this->request->getPost('id_anak');
         $nik = $this->request->getPost('nik');
         $nama_anak = $this->request->getPost('nama_anak');
@@ -44,9 +44,25 @@ class DataAnak extends BaseController
         $bbl = $this->request->getPost('bbl');
         $pbl = $this->request->getPost('pbl');
         $alamat = $this->request->getPost('alamat');
-        $anakModel = new \App\Models\DataAnakModel();
         $cek = $anakModel->where('nik', $nik)->first();
-        if ($nik == "0" && $cek == null) {
+        // dd($cek, $nik);
+        if ($nik == "") {
+            $data = [
+                'id_anak' => $id_anak,
+                'nik' => $nik,
+                'nama_anak' => $nama_anak,
+                'nama_ibu' => $nama_ibu,
+                'nama_ayah' => $nama_ayah,
+                'tanggal_lahir' => $tanggal_lahir,
+                'jenis_kelamin' => $jenis_kelamin,
+                'bbl' => $bbl,
+                'pbl' => $pbl,
+                'alamat' => $alamat
+            ];
+            $anakModel->insert($data);
+            session()->setFlashdata('success', 'Data Berhasil Ditambahkan');
+            return redirect()->to('/dataanak');
+        } else if ($cek == null) {
             $data = [
                 'id_anak' => $id_anak,
                 'nik' => $nik,
@@ -104,20 +120,45 @@ class DataAnak extends BaseController
         $bbl = $this->request->getPost('bbl');
         $pbl = $this->request->getPost('pbl');
         $alamat = $this->request->getPost('alamat');
-        $data = [
-            'id_anak' => $id_anak,
-            'nik' => $nik,
-            'nama_anak' => $nama_anak,
-            'nama_ibu' => $nama_ibu,
-            'nama_ayah' => $nama_ayah,
-            'tanggal_lahir' => $tanggal_lahir,
-            'jenis_kelamin' => $jenis_kelamin,
-            'bbl' => $bbl,
-            'pbl' => $pbl,
-            'alamat' => $alamat
-        ];
-        $db->table('data_anak')->where('id_anak', $id_anak)->update($data);
-        return redirect()->to('/dataanak');
+        //cek nik agar tidak sama
+        $cek = $db->query("SELECT * FROM data_anak WHERE nik = '$nik' AND id_anak != '$id_anak'");
+        $row = $cek->getRow();
+        if ($nik == "") {
+            $data = [
+                'id_anak' => $id_anak,
+                'nik' => $nik,
+                'nama_anak' => $nama_anak,
+                'nama_ibu' => $nama_ibu,
+                'nama_ayah' => $nama_ayah,
+                'tanggal_lahir' => $tanggal_lahir,
+                'jenis_kelamin' => $jenis_kelamin,
+                'bbl' => $bbl,
+                'pbl' => $pbl,
+                'alamat' => $alamat
+            ];
+            $db->table('data_anak')->where('id_anak', $id_anak)->update($data);
+            session()->setFlashdata('success', 'Data Berhasil Diubah');
+            return redirect()->to('/dataanak');
+        } else if ($row == null) {
+            $data = [
+                'id_anak' => $id_anak,
+                'nik' => $nik,
+                'nama_anak' => $nama_anak,
+                'nama_ibu' => $nama_ibu,
+                'nama_ayah' => $nama_ayah,
+                'tanggal_lahir' => $tanggal_lahir,
+                'jenis_kelamin' => $jenis_kelamin,
+                'bbl' => $bbl,
+                'pbl' => $pbl,
+                'alamat' => $alamat
+            ];
+            $db->table('data_anak')->where('id_anak', $id_anak)->update($data);
+            session()->setFlashdata('success', 'Data Berhasil Diubah');
+            return redirect()->to('/dataanak');
+        } else {
+            session()->setFlashdata('error', 'NIK Sudah Terdaftar');
+            return redirect()->to('/dataanak');
+        }
     }
     //create function to delete data with alert
     public function delete($id_anak)

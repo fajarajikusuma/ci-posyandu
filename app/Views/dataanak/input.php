@@ -21,6 +21,11 @@
                 <?= session()->getFlashdata('error'); ?>
             </div>
         <?php endif; ?>
+        <?php if (session()->getFlashdata('success')) : ?>
+            <div class="alert alert-success">
+                <?= session()->getFlashdata('success'); ?>
+            </div>
+        <?php endif; ?>
         <div class="accordion" id="accordionPanelsStayOpenExample">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
@@ -43,7 +48,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="exampleInputPassword1" class="form-label">NIK</label>
-                                            <input type="text" class="form-control" id="exampleInputNama" placeholder="Input NIK" name="nik" value="0">
+                                            <input type="text" class="form-control" id="exampleInputNama" placeholder="Input NIK" name="nik" value="">
                                         </div>
                                         <div class="mb-3">
                                             <label for="exampleInputPassword1" class="form-label">Nama Anak</label>
@@ -57,7 +62,7 @@
                                             <label for="exampleInputPassword1" class="form-label">Nama Ayah</label>
                                             <input type="text" class="form-control" id="exampleInputNama" placeholder="Input Nama Ayah" name="nama_ayah" required>
                                         </div>
-                                        <div class="mb-3">
+                                        <div class="mb-3 w-25">
                                             <label for="exampleInputPassword1" class="form-label">Tanggal Lahir</label>
                                             <input type="date" class="form-control" id="exampleInputNama" name="tanggal_lahir" required>
                                         </div>
@@ -77,10 +82,17 @@
                                             <label for="lingkar_dada" class="form-label">Panjang Badan Lahir</label>
                                             <input type="number" step="any" class="form-control" id="pbl" name="pbl" placeholder="Masukan PBL" required>
                                         </div>
-                                        <label for="">Alamat</label>
-                                        <div class="form-floating mb-3">
-                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="alamat" required></textarea>
-                                            <label for="floatingTextarea">Input Alamat</label>
+                                        <div class="mb-3">
+                                            <label for="disabledSelect" class="form-label">Alamat</label>
+                                            <select id="disabledSelect" class="form-select" name="alamat" required>
+                                                <option selected="true" disabled value="">Masukan Alamat</option>
+                                                <option value="RT 40 RW 08">RT 40 RW 08</option>
+                                                <option value="RT 41 RW 08">RT 41 RW 08</option>
+                                                <option value="RT 42 RW 08">RT 42 RW 08</option>
+                                                <option value="RT 43 RW 08">RT 43 RW 08</option>
+                                                <option value="RT 44 RW 08">RT 44 RW 08</option>
+                                                <option value="RT 45 RW 08">RT 45 RW 08</option>
+                                            </select>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Input</button>
                                     </form>

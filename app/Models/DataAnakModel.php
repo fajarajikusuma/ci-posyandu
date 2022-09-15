@@ -14,7 +14,7 @@ class DataAnakModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_anak', 'nama_anak', 'nama_ibu', 'nama_ayah', 'tanggal_lahir', 'jenis_kelamin', 'pbl', 'bbl', 'alamat'];
+    protected $allowedFields    = ['id_anak', 'nik', 'nama_anak', 'nama_ibu', 'nama_ayah', 'tanggal_lahir', 'jenis_kelamin', 'pbl', 'bbl', 'alamat'];
 
     // Dates
     protected $useTimestamps = false;

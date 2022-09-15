@@ -54,9 +54,28 @@
                             <label for="lingkar_dada" class="form-label">Panjang Badan Lahir</label>
                             <input type="number" step="any" class="form-control" id="pbl" name="pbl" value="<?= $pbl; ?>">
                         </div>
-                        <div class="form-group">
-                            <label for="alamat">Alamat</label>
-                            <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $alamat; ?>">
+                        <div class="mb-3">
+                            <label for="disabledSelect" class="form-label">Alamat</label>
+                            <select id="disabledSelect" class="form-select" name="alamat">
+                                <option value="RT 40 RW 08" <?php if ($alamat == "RT 40 RW 08") {
+                                                                echo 'selected';
+                                                            } ?>>RT 40 RW 08</option>
+                                <option value="RT 41 RW 08" <?php if ($alamat == "RT 41 RW 08") {
+                                                                echo 'selected';
+                                                            } ?>>RT 41 RW 08</option>
+                                <option value="RT 42 RW 08" <?php if ($alamat == "RT 42 RW 08") {
+                                                                echo 'selected';
+                                                            } ?>>RT 42 RW 08</option>
+                                <option value="RT 43 RW 08" <?php if ($alamat == "RT 43 RW 08") {
+                                                                echo 'selected';
+                                                            } ?>>RT 43 RW 08</option>
+                                <option value="RT 44 RW 08" <?php if ($alamat == "RT 44 RW 08") {
+                                                                echo 'selected';
+                                                            } ?>>RT 44 RW 08</option>
+                                <option value="RT 45 RW 08" <?php if ($alamat == "RT 45 RW 08") {
+                                                                echo 'selected';
+                                                            } ?>>RT 45 RW 08</option>
+                            </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Edit</button>
                     </form>
