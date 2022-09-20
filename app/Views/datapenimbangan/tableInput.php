@@ -13,6 +13,16 @@
 
 <body>
     <div class="container-fluid mb-5">
+        <?php if (session()->getFlashdata('error')) : ?>
+            <div class="alert alert-danger">
+                <?= session()->getFlashdata('error'); ?>
+            </div>
+        <?php endif; ?>
+        <?php if (session()->getFlashdata('success')) : ?>
+            <div class="alert alert-success">
+                <?= session()->getFlashdata('success'); ?>
+            </div>
+        <?php endif; ?>
         <div class="accordion" id="accordionPanelsStayOpenExample">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
@@ -32,7 +42,6 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
-                                                <th scope="col">ID Anak</th>
                                                 <th scope="col">NIK</th>
                                                 <th scope="col">Nama Anak</th>
                                                 <th scope="col">Nama Ibu</th>
@@ -50,7 +59,6 @@
                                             <?php foreach ($lihat as $value) : ?>
                                                 <tr>
                                                     <th scope="row"><?= $no++; ?></th>
-                                                    <td><?= $value['id_anak']; ?></td>
                                                     <td><?= $value['nik']; ?></td>
                                                     <td><?= $value['nama_anak']; ?></td>
                                                     <td><?= $value['nama_ibu']; ?></td>
@@ -61,7 +69,7 @@
                                                     <td><?= $value['pbl']; ?></td>
                                                     <td><?= $value['alamat']; ?></td>
                                                     <td>
-                                                        <a href="/datapenimbangan/inputData/<?= $value['id_anak']; ?>" class="btn btn-success">Input Data Penimbangan</a>
+                                                        <center><a href="/datapenimbangan/inputData/<?= $value['id_anak']; ?>" class="btn btn-success"><i class="fa-regular fa-pen-to-square"></i></a></center>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>
@@ -92,13 +100,12 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
-                                                <th scope="col">Id Timbang</th>
                                                 <th scope="col">NIK</th>
                                                 <th scope="col">Nama Anak</th>
                                                 <th scope="col">Nama Ibu</th>
                                                 <th scope="col">Nama Ayah</th>
                                                 <th scope="col">Tanggal Lahir</th>
-                                                <th scope="col">Jns Kelamin</th>
+                                                <th scope="col">L / P</th>
                                                 <th scope="col">Alamat</th>
                                                 <th scope="col">Umur</th>
                                                 <th scope="col">BBL</th>
@@ -116,7 +123,6 @@
                                             <?php foreach ($showDataTimbang as $value) : ?>
                                                 <tr>
                                                     <th scope="row"><?= $no++; ?></th>
-                                                    <td><?= $value->id_penimbangan; ?></td>
                                                     <td><?= $value->nik; ?></td>
                                                     <td><?= $value->nama_anak; ?></td>
                                                     <td><?= $value->nama_ibu; ?></td>
@@ -139,8 +145,10 @@
                                                     <td><?= $value->tanggal_input; ?></td>
                                                     <td><?= $value->petugas; ?></td>
                                                     <td>
-                                                        <a href="/datapenimbangan/edit/<?= $value->id_penimbangan; ?>" class="btn btn-warning">Edit</a>
-                                                        <a href="/datapenimbangan/delete/<?= $value->id_penimbangan; ?>" class="btn btn-danger" onclick="return confirm('Yakin data <?= $value->id_penimbangan; ?> akan di hapus?')">Delete</a>
+                                                        <center>
+                                                            <a href="/datapenimbangan/edit/<?= $value->id_penimbangan; ?>" class="btn btn-warning"><i class="fa-solid fa-file-pen"></i></a>
+                                                            <a href="/datapenimbangan/delete/<?= $value->id_penimbangan; ?>" class="btn btn-danger" onclick="return confirm('Yakin data <?= $value->nama_anak; ?> akan di hapus?')"><i class="fa-solid fa-trash-can"></i></a>
+                                                        </center>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>

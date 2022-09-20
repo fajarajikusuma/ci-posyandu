@@ -28,6 +28,10 @@
                         <input type="text" class="form-control" id="id_anak" name="id_anak" value="<?= $id_anak ?>" readonly>
                     </div>
                     <div class="mb-3">
+                        <label for="nama_anak" class="form-label">Nama Anak</label>
+                        <input type="text" class="form-control" id="nama_anak" name="nama_anak" value="<?= $nama_anak ?>" readonly>
+                    </div>
+                    <div class="mb-3">
                         <label for="tanggal_penimbangan" class="form-label">Umur</label>
                         <input type="number" step="any" class="form-control" id="umur" name="umur" value="<?= $umur ?>" min="0" required>
                     </div>

@@ -120,7 +120,6 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
-                                                <th scope="col">ID Anak</th>
                                                 <th scope="col">NIK</th>
                                                 <th scope="col">Nama Anak</th>
                                                 <th scope="col">Nama Ibu</th>
@@ -138,7 +137,6 @@
                                             <?php foreach ($lihat as $value) : ?>
                                                 <tr>
                                                     <th scope="row"><?= $no++; ?></th>
-                                                    <td><?= $value['id_anak']; ?></td>
                                                     <td><?= $value['nik']; ?></td>
                                                     <td><?= $value['nama_anak']; ?></td>
                                                     <td><?= $value['nama_ibu']; ?></td>
@@ -149,8 +147,10 @@
                                                     <td><?= $value['pbl']; ?></td>
                                                     <td><?= $value['alamat']; ?></td>
                                                     <td>
-                                                        <a href="/dataanak/edit/<?= $value['id_anak']; ?>" class="btn btn-warning">Edit</a>
-                                                        <a href="/dataanak/delete/<?= $value['id_anak']; ?>" class="btn btn-danger" onclick="return confirm('Yakin data <?= $value['id_anak']; ?> akan di hapus?')">Delete</a>
+                                                        <center>
+                                                            <a href="/dataanak/edit/<?= $value['id_anak']; ?>" class="btn btn-warning"><i class="fa-solid fa-file-pen"></i></a>
+                                                            <a href="/dataanak/delete/<?= $value['id_anak']; ?>" class="btn btn-danger" onclick="return confirm('Yakin data <?= $value['nama_anak']; ?> akan di hapus?')"><i class="fa-solid fa-trash-can"></i></a>
+                                                        </center>
                                                     </td>
                                                     <!-- Delete Modal-->
                                                     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
