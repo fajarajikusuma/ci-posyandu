@@ -14,8 +14,6 @@ class DataPenimbangan extends BaseController
         // show join data penimbangan and data anak
         session();
         $db = \Config\Database::connect();
-        // $query = $db->query("SELECT * FROM data_penimbangan JOIN data_anak ON data_penimbangan.id_anak = data_anak.id_anak");
-        // $showDataTimbang = $query->getResult();
         $dataAnakModel = new \App\Models\DataAnakModel();
         $dataAnak = $dataAnakModel->findAll();
         $umur = array();
@@ -23,15 +21,12 @@ class DataPenimbangan extends BaseController
             $tanggal_lahir = $row['tanggal_lahir'];
             $tanggal_lahir = new \DateTime($tanggal_lahir);
             $today = new \DateTime('today');
-            // $today = new \DateTime('2021-09-18');
             $umurTahun = $today->diff($tanggal_lahir)->y;
             $umurBulan = $today->diff($tanggal_lahir)->m;
             $umurAsBulan = $umurTahun * 12;
             $umurBulan = $umurAsBulan + $umurBulan;
             array_push($umur, $umurBulan);
         }
-        //set today date lower than this date
-        // dd($today);
         //get array id_anak from data_anak
         $id_anak = array();
         foreach ($dataAnak as $row) {
@@ -48,22 +43,18 @@ class DataPenimbangan extends BaseController
                 $dataUmur[$key] = $value;
             }
         }
-        // dd($umur);
         //show $dataUmur where umur >= 60 bulan
         $dataUmur = array_keys($dataUmur);
         $dataUmur = implode("','", $dataUmur);
         $query = $db->query("SELECT * FROM data_penimbangan JOIN data_anak ON data_penimbangan.id_anak = data_anak.id_anak WHERE data_penimbangan.id_anak IN ('$dataUmur')");
         $showDataTimbang = $query->getResult();
+        $query1 = $db->query("SELECT * FROM data_anak WHERE id_anak IN ('$dataUmur')");
+        $showDataAnak = $query1->getResult();
         $data = [
             'title' => 'Data Pasca Timbang',
-            'lihat' => $dataAnak,
+            'lihat' => $showDataAnak,
             'showDataTimbang' => $showDataTimbang
         ];
-        // return view('datapascatimbang/tableDataPasca', $data);
-        // $data = [
-        //     'title' => 'Data Penimbangan',
-        //     'showDataTimbang' => $showDataTimbang
-        // ];
         return view('datapenimbangan/tableInput', $data);
     }
 

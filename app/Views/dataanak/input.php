@@ -137,19 +137,19 @@
                                             <?php foreach ($lihat as $value) : ?>
                                                 <tr>
                                                     <th scope="row"><?= $no++; ?></th>
-                                                    <td><?= $value['nik']; ?></td>
-                                                    <td><?= $value['nama_anak']; ?></td>
-                                                    <td><?= $value['nama_ibu']; ?></td>
-                                                    <td><?= $value['nama_ayah']; ?></td>
-                                                    <td><?= $value['tanggal_lahir']; ?></td>
-                                                    <td><?= $value['jenis_kelamin']; ?></td>
-                                                    <td><?= $value['bbl']; ?></td>
-                                                    <td><?= $value['pbl']; ?></td>
-                                                    <td><?= $value['alamat']; ?></td>
+                                                    <td><?= $value->nik; ?></td>
+                                                    <td><?= $value->nama_anak; ?></td>
+                                                    <td><?= $value->nama_ibu; ?></td>
+                                                    <td><?= $value->nama_ayah; ?></td>
+                                                    <td><?= $value->tanggal_lahir; ?></td>
+                                                    <td><?= $value->jenis_kelamin; ?></td>
+                                                    <td><?= $value->bbl; ?></td>
+                                                    <td><?= $value->pbl; ?></td>
+                                                    <td><?= $value->alamat; ?></td>
                                                     <td>
                                                         <center>
-                                                            <a href="/dataanak/edit/<?= $value['id_anak']; ?>" class="btn btn-warning"><i class="fa-solid fa-file-pen"></i></a>
-                                                            <a href="/dataanak/delete/<?= $value['id_anak']; ?>" class="btn btn-danger" onclick="return confirm('Yakin data <?= $value['nama_anak']; ?> akan di hapus?')"><i class="fa-solid fa-trash-can"></i></a>
+                                                            <a href="/dataanak/edit/<?= $value->id_anak; ?>" class="btn btn-warning"><i class="fa-solid fa-file-pen"></i></a>
+                                                            <a href="/dataanak/delete/<?= $value->id_anak; ?>" class="btn btn-danger" onclick="return confirm('Yakin data <?= $value->nama_anak; ?> akan di hapus?')"><i class="fa-solid fa-trash-can"></i></a>
                                                         </center>
                                                     </td>
                                                     <!-- Delete Modal-->
@@ -162,10 +162,10 @@
                                                                         <span aria-hidden="true">×</span>
                                                                     </button>
                                                                 </div>
-                                                                <div class="modal-body">Yakin Data <?= $value['id_anak']; ?> akan di Hapus?</div>
+                                                                <div class="modal-body">Yakin Data <?= $value->id_anak; ?> akan di Hapus?</div>
                                                                 <div class="modal-footer">
                                                                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                                                    <a class="btn btn-danger" href="/dataanak/delete/<?= $value['id_anak']; ?>">Delete</a>
+                                                                    <a class="btn btn-danger" href="/dataanak/delete/<?= $value->id_anak; ?>">Delete</a>
                                                                 </div>
                                                             </div>
                                                         </div>

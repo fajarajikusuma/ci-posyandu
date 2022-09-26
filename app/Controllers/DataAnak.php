@@ -22,10 +22,11 @@ class DataAnak extends BaseController
         $newID = $char . sprintf("%04s", $noUrut);
         $DataAnak = new \App\Models\DataAnakModel();
         $lihat = $DataAnak->findAll();
+        $lihatObject = json_decode(json_encode($lihat), FALSE);
         $data = [
             'title' => 'Data Anak',
             'id_anak' => $newID,
-            'lihat' => $lihat
+            'lihat' => $lihatObject
         ];
         return view('dataanak/input', $data);
     }

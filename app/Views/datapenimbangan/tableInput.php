@@ -59,17 +59,17 @@
                                             <?php foreach ($lihat as $value) : ?>
                                                 <tr>
                                                     <th scope="row"><?= $no++; ?></th>
-                                                    <td><?= $value['nik']; ?></td>
-                                                    <td><?= $value['nama_anak']; ?></td>
-                                                    <td><?= $value['nama_ibu']; ?></td>
-                                                    <td><?= $value['nama_ayah']; ?></td>
-                                                    <td><?= $value['tanggal_lahir']; ?></td>
-                                                    <td><?= $value['jenis_kelamin']; ?></td>
-                                                    <td><?= $value['bbl']; ?></td>
-                                                    <td><?= $value['pbl']; ?></td>
-                                                    <td><?= $value['alamat']; ?></td>
+                                                    <td><?= $value->nik; ?></td>
+                                                    <td><?= $value->nama_anak; ?></td>
+                                                    <td><?= $value->nama_ibu; ?></td>
+                                                    <td><?= $value->nama_ayah; ?></td>
+                                                    <td><?= $value->tanggal_lahir; ?></td>
+                                                    <td><?= $value->jenis_kelamin; ?></td>
+                                                    <td><?= $value->bbl; ?></td>
+                                                    <td><?= $value->pbl; ?></td>
+                                                    <td><?= $value->alamat; ?></td>
                                                     <td>
-                                                        <center><a href="/datapenimbangan/inputData/<?= $value['id_anak']; ?>" class="btn btn-success"><i class="fa-regular fa-pen-to-square"></i></a></center>
+                                                        <center><a href="/datapenimbangan/inputData/<?= $value->id_anak; ?>" class="btn btn-success"><i class="fa-regular fa-pen-to-square"></i></a></center>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>
